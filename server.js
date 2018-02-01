@@ -22,6 +22,13 @@ app.use(session({secret: 'mysecretpass'}))
     req.session.todolist.push(req.body.newtodo);
   }
   res.redirect('/todo');
+})
+.get('/todo/supprimer/:id', function(req, res){
+  if(req.params.id != ''){
+    req.session.todolist.splice(req.params.id, 1);
+  }
+  res.redirect('/todo');
+
 });
 
 
